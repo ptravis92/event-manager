@@ -10,12 +10,15 @@ import {
    CreateEventComponent,
    EventService,
    EventsListResolverService,
+   CreateSessionComponent,
 } from './events/index'
 import { AppComponent } from './app.component';
 import { ToasterService } from './common/toaster.service';
 import { Error404Component } from './errors/404.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { appRoutes } from './routes';
+import { AuthService } from './user/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
    declarations: [
@@ -23,6 +26,7 @@ import { appRoutes } from './routes';
       EventsListComponent,
       EventThumbnailComponent,
       EventDetailsComponent,
+      CreateSessionComponent,
       NavbarComponent,
       CreateEventComponent,
       Error404Component
@@ -35,10 +39,13 @@ import { appRoutes } from './routes';
       {
          provide: 'canDeactivateCreateEvent', 
          useValue: checkDirtyState
-      }
+      },
+      AuthService
    ],
    imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
 	],
    bootstrap: [

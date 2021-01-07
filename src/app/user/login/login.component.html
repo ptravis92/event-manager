@@ -1,0 +1,51 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="login(loginForm.value)"
+    autocomplete="off">
+    <div class="form-group" >
+      <label for="userName">User Name:</label>
+      <em *ngIf="loginForm.controls.userName?.invalid &&
+                 (loginForm.controls.userName?.touched || mouseoverLogin)"> Required</em>
+      <input (ngModel)="userName" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..." />
+    </div>
+    <div class="form-group" >
+      <label for="password">Password:</label>
+      <em *ngIf="loginForm.controls.password?.invalid &&
+                 (loginForm.controls.password?.touched || mouseoverLogin)"> Required</em>
+      <input (ngModel)="password" name="password" required id="password" type="password" class="form-control"placeholder="Password..." />
+    </div>
+        <span (mouseenter)="mouseoverLogin=true"
+              (mouseleave)="mouseoverLogin=false">
+              <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+        </span>
+    <button (click)="cancel()" [disabled]="loginForm.invalid" type="button" class="btn btn-default">Cancel</button>
+  </form>
+</div>
+
+<!-- # Validating a Template-based Form
+### [Angular 2 Fundamentals](https://app.pluralsight.com/courses/angular2-fundamentals) Practice Exercise
+
+**_Instructions_**: This app has a create event form that has been wired up to save a new event, but it is
+missing validation. To get to the form in the application, click the "Create New Event" link on the events 
+list page. Add validation to the form that displays an error message next to the field(s) that have an error. 
+Disable the Save button when the form is invalid so that the user can't save an invalid event. Add the following
+validations: make all fields required; make the country both required and require it to consist of two upper-case
+letters. Be sure to show the appropriate error message for the country field depending on which validation is
+triggered. To do this you will need to:
+
+1. Add the appropriate validators to the field as defined above
+
+1. Add a validation messages for each field and add styles to the component to make those validation messages
+   appear how and where you want them to.
+
+1. Make the validation messages appear only if the fields are invalid and have been touched.
+ 
+1. Bind the disabled property on the save button to the `invalid` property of the form.
+
+1. _(Optional)_ Style the input fields so that they have a different background color if they are invalid. 
+
+
+A finished version of this exercise is available here for reference: http://plnkr.co/edit/WEsalJIePbiHLZClMNvT?p=info -->
