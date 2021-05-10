@@ -5,15 +5,15 @@ import { ISession, restrictedWords } from '../../shared';
 @Component({
   selector: 'app-create-session',
   templateUrl: './create-session.component.html',
-  styleUrls: ['./create-session.component.css', '../../../common/validation.css'] 
+  styleUrls: ['./create-session.component.css', '../../../common/validation.css']
 })
 export class CreateSessionComponent implements OnInit {
-  newSessionForm: FormGroup
-  name: FormControl
-  presenter: FormControl
-  duration: FormControl
-  level: FormControl
-  abstract: FormControl
+  newSessionForm: FormGroup;
+  name: FormControl;
+  presenter: FormControl;
+  duration: FormControl;
+  level: FormControl;
+  abstract: FormControl;
   constructor() { }
 
   ngOnInit() {
@@ -29,11 +29,11 @@ export class CreateSessionComponent implements OnInit {
       duration: this.duration,
       level: this.level,
       abstract: this.abstract
-    })
+    });
   }
 
   saveSession(formValues) {
-    let session: ISession = {
+    const session: ISession = {
       id: undefined,
       name: formValues.name,
       presenter: formValues.presenter,
@@ -41,7 +41,7 @@ export class CreateSessionComponent implements OnInit {
       level: formValues.level,
       abstract: formValues.abstract,
       voters: []
-    }
+    };
     console.log(session);
   }
 
