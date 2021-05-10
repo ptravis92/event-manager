@@ -9,18 +9,17 @@ import { EventService } from '../shared/event.service';
 
 export class EventRouteActivatorService implements CanActivate {
 
-  constructor(private eventService:EventService, private router:Router) { }
+  constructor(private eventService: EventService, private router: Router) { }
   path: ActivatedRouteSnapshot[];
   route: ActivatedRouteSnapshot;
 
-  canActivate(route:ActivatedRouteSnapshot) {
-    const eventExists = !!this.eventService.getEvent(+route.params['id'])
+  canActivate(route: ActivatedRouteSnapshot) {
+    const eventExists = !!this.eventService.getEvent(+route.params['id']);
 
-    if(!eventExists) {
-      this.router.navigate(['/404'])
+    if (!eventExists) {
+      this.router.navigate(['/404']);
     }
     return eventExists;
   }
 
 }
-
